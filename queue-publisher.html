@@ -1,0 +1,77 @@
+<script type="text/javascript">
+    RED.nodes.registerType('queue-publisher',{
+        category: 'function',
+        color: '#c0deed',
+        defaults: {
+            redisConfig: { value:"", type: "queue-redis-config" },
+            queueName: { value:"default" },
+            workerName: { value:"" },
+            attempts: { value:"5" },
+            backoffType: { value:"exponential" },
+            backoffDelay: { value:"1000" },
+            removeAge: { value:"3600" },
+            removeCount: { value:"50" },
+            removeOnFail: { value:"false" },
+            jobId: { value:"" }
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-send",
+        label: function() {
+            return this.name || "Queue - Publisher";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="queue-publisher">
+    <div class="form-row">
+        <label for="node-input-redisConfig">Redis Config</label>
+        <input type="text" id="node-input-redisConfig">
+    </div>
+    <div class="form-row">
+        <label for="node-input-queueName">Queue Name</label>
+        <input type="text" id="node-input-queueName">
+    </div>
+    <div class="form-row">
+        <label for="node-input-workerName">Worker Name</label>
+        <input type="text" id="node-input-workerName">
+    </div>
+    <div class="form-row">
+        <label for="node-input-attempts">Attempts</label>
+        <input type="number" id="node-input-attempts">
+    </div>
+    <div class="form-row">
+        <label for="node-input-backoffType">Backoff Type</label>
+        <select id="node-input-backoffType">
+            <option value="fixed">Fixed</option>
+            <option value="exponential">Exponential</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-backoffDelay">Backoff Delay (ms)</label>
+        <input type="number" id="node-input-backoffDelay">
+    </div>
+    <div class="form-row">
+        <label for="node-input-removeAge">Remove Age (s)</label>
+        <input type="number" id="node-input-removeAge">
+    </div>
+    <div class="form-row">
+        <label for="node-input-removeCount">Remove Count</label>
+        <input type="number" id="node-input-removeCount">
+    </div>
+    <div class="form-row">
+        <label for="node-input-removeOnFail">Remove on Fail</label>
+        <select id="node-input-removeOnFail">
+            <option value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-jobId">Custom Job ID (optional)</label>
+        <input type="text" id="node-input-jobId">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="queue-publisher">
+    <p>Publishes msg.payload to a BullMQ queue with full job config support.</p>
+</script>

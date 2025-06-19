@@ -1,0 +1,26 @@
+<script type="text/javascript">
+    RED.nodes.registerType('queue-fail',{
+        category: 'function',
+        color: '#fbb',
+        defaults: {
+            name: { value:"" }
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-ban",
+        label: function() {
+            return this.name || "Queue - Fail";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="queue-fail">
+    <div class="form-row">
+        <label for="node-input-name">Name</label>
+        <input type="text" id="node-input-name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-failReason">Fail Reason (optional)</label>
+        <input type="text" id="node-input-failReason">
+    </div>
+</script>

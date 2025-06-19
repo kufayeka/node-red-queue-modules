@@ -1,0 +1,23 @@
+{
+  "name": "kufayeka-queue-modules",
+  "version": "0.1.0",
+  "author": "kufayeka",
+  "license": "ISC",
+  "description": "Queue Modules for Node-RED ",
+  "keywords": [
+    "node-red",
+    "node-red-node"
+  ],
+  "node-red": {
+    "nodes": {
+      "Queue-RedisConfig": "queue-redis-config.js",
+      "Queue-Publisher": "queue-publisher.js",
+      "Queue-Consumer": "queue-consumer.js",
+      "Queue-Fail": "queue-fail.js"
+    }
+  },
+  "dependencies": {
+    "bullmq": "^5.53.3",
+    "ioredis": "^5.6.1"
+  }
+}

@@ -1,0 +1,46 @@
+<script type="text/javascript">
+    RED.nodes.registerType('queue-consumer',{
+        category: 'function',
+        color: '#c0deed',
+        defaults: {
+            redisConfig: { value:"", type: "queue-redis-config" },
+            queueName: { value:"default", required: true },
+            concurrency: { value:"1", required: true },
+            workerName: { value:"worker", required: true },
+            delayMs: { value:"0", required: true }
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-download",
+        label: function() {
+            return this.name || "Queue - Consumer";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="queue-consumer">
+    <div class="form-row">
+        <label for="node-input-redisConfig"> Redis Config</label>
+        <input type="text" id="node-input-redisConfig">
+    </div>
+    <div class="form-row">
+        <label for="node-input-queueName"> Queue Name</label>
+        <input type="text" id="node-input-queueName">
+    </div>
+    <div class="form-row">
+        <label for="node-input-workerName"> Worker Name</label>
+        <input type="text" id="node-input-workerName">
+    </div>
+    <div class="form-row">
+        <label for="node-input-concurrency"> Concurrency</label>
+        <input type="text" id="node-input-concurrency">
+    </div>
+    <div class="form-row">
+        <label for="node-input-delayMs">Delay per Job (ms)</label>
+        <input type="number" id="node-input-delayMs" value="0">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="queue-consumer">
+    <p>Processes jobs from a BullMQ queue with dynamic concurrency.</p>
+</script>
